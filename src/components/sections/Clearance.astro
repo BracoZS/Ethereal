@@ -1,0 +1,41 @@
+---
+import Container from "@/components/common/Container.astro";
+import { clearance } from "@/sitedata/sections";
+import Button from "@/components/ui/Button.astro";
+---
+
+<!-- Protocol Clearance -->
+<section class="py-32 bg-surface-container-lowest">
+    <Container>
+        <h2 class="font-headline text-5xl mb-20 text-center">{clearance.title}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant/30 border border-outline-variant/30">
+            {clearance.tiers.map((tier) => ( 
+                <div class:list={["bg-surface p-12 flex flex-col h-full relative overflow-hidden", tier.recommended && "border-x md:border-x-0 md:border-y-0"]}>
+                    {tier.recommended && (
+                        <div class="absolute top-0 right-0 bg-primary text-on-primary px-4 py-1 font-label text-[8px] tracking-widest">
+                            RECOMMENDED
+                        </div>
+                    )}
+                    <div class:list={["font-label text-xs tracking-widest mb-4 uppercase", tier.recommended ? "text-primary" : "text-secondary"]}>
+                        {tier.level}
+                    </div>
+                    <h3 class="font-headline text-3xl mb-8 tracking-tighter">{tier.name}</h3>
+                    <div class="text-4xl font-headline mb-12">
+                        {tier.price}{tier.period && <span class="text-xs font-label text-secondary">{tier.period}</span>}
+                    </div>
+                    <ul class:list={["space-y-4 font-body text-sm mb-12 flex-grow", tier.recommended ? "text-on-surface" : "text-secondary"]}>
+                        {tier.features.map(feature => (
+                            <li>{feature}</li>
+                        ))}
+                    </ul>
+                    <Button class:list={[
+                        "w-full text-[10px] uppercase",
+                        tier.recommended ? "btn-primary" : "btn-outline hover:bg-primary hover:text-on-primary hover:border-primary"
+                    ]}>
+                        {tier.button}
+                    </Button>
+                </div>
+            ))}
+        </div>
+    </Container>
+</section>

@@ -1,0 +1,43 @@
+---
+import { site } from "@/sitedata/site";
+
+interface Props {
+	title?: string;
+	description?: string;
+	canonicalURL?: string;
+	image?: string;
+	noindex?: boolean;
+}
+
+const {
+	title = "Astro Starter Template",
+	description = "A starter, scalable, and easy-to-use Astro template.",
+	canonicalURL = Astro.url.href,
+	image = "/og-image.png",
+} = Astro.props;
+
+const siteTitle = title ? `${title} | ${site.name}` : site.name;
+---
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{siteTitle}</title>
+<meta name="title" content={siteTitle} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={siteTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={siteTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<!-- end SEO metatags -->

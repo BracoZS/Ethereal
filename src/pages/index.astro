@@ -1,0 +1,25 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Hero from "@/components/sections/Hero.astro";
+import Stats from "@/components/sections/Stats.astro";
+import Genesis from "@/components/sections/Genesis.astro";
+import { site } from "@/sitedata/site";
+import Protocol from "@/components/sections/Protocol.astro";
+import Modules from "@/components/sections/Modules.astro";
+import Nodes from "@/components/sections/Nodes.astro";
+import Collection from "@/components/sections/Collection.astro";
+import Clearance from "@/components/sections/Clearance.astro";
+import Queries from "@/components/sections/Faqs.astro";
+---
+
+<BaseLayout title={site.name}>
+    <Hero />
+    <Stats />
+    <Genesis />
+    <Protocol />
+    <Modules />
+    <Nodes />
+    <Collection />
+    <Clearance />
+    <Queries />
+</BaseLayout>

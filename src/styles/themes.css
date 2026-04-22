@@ -1,0 +1,98 @@
+/* Default theme */
+@theme {
+  /* --- PRIMARY --- */
+  --color-primary: #d0bcff;
+  --color-on-primary: #3c0091;
+  --color-primary-container: #a078ff;
+  --color-on-primary-container: #340080;
+  --color-inverse-primary: #6d3bd7;
+  --color-primary-fixed: #e9ddff;
+  --color-primary-fixed-dim: #d0bcff;
+  --color-on-primary-fixed: #23005c;
+  --color-on-primary-fixed-variant: #5516be;
+
+  /* --- SECONDARY --- */
+  --color-secondary: #c6c6c6;
+  --color-on-secondary: #2f3131;
+  --color-secondary-container: #484949;
+  --color-on-secondary-container: #b8b8b8;
+  --color-secondary-fixed: #e3e2e2;
+  --color-secondary-fixed-dim: #c6c6c6;
+  --color-on-secondary-fixed: #1a1c1c;
+  --color-on-secondary-fixed-variant: #464747;
+
+  /* --- TERTIARY --- */
+  --color-tertiary: #d0bcff;
+  --color-on-tertiary: #3b0091;
+  --color-tertiary-container: #9f78ff;
+  --color-on-tertiary-container: #340080;
+  --color-tertiary-fixed: #e9ddff;
+  --color-tertiary-fixed-dim: #d0bcff;
+  --color-on-tertiary-fixed: #23005c;
+  --color-on-tertiary-fixed-variant: #5516bf;
+
+  /* --- SURFACE & BACKGROUND --- */
+  --color-surface: #131313;
+  --color-on-surface: #e5e2e1;
+  --color-background: #131313;
+  --color-on-background: #e5e2e1;
+  --color-surface-bright: #3a3939;
+  --color-surface-dim: #131313;
+  --color-surface-variant: #353534;
+  --color-on-surface-variant: #cbc3d7;
+  --color-inverse-surface: #e5e2e1;
+  --color-inverse-on-surface: #313030;
+  --color-surface-tint: #d0bcff;
+
+  /* --- SURFACE CONTAINERS --- */
+  --color-surface-container-lowest: #0e0e0e;
+  --color-surface-container-low: #1c1b1b;
+  --color-surface-container: #201f1f;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #353534;
+
+  /* --- ERROR --- */
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+
+  /* --- OUTLINE --- */
+  --color-outline: #958ea0;
+  --color-outline-variant: #494454;
+
+  /* Otros únicos */
+  --color-nav-links: #c4c7c9;
+  --color-accent-violet: #ddb7ff;
+
+  /* Aliases for standard names */
+  --color-background: var(--color-surface);
+  --color-on-background: var(--color-on-surface);
+  --color-foreground: var(--color-on-surface);
+  --color-on-foreground: var(--color-surface);
+  --color-muted: var(--color-surface-container);
+  --color-muted-foreground: var(--color-on-surface-variant);
+  --color-accent: var(--color-primary);
+  --color-on-accent: var(--color-on-primary);
+  --color-border: var(--color-outline-variant);
+
+
+  /* Typography */
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Manrope", sans-serif;
+  --font-serif: "Noto Serif", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-icons: "Material Symbols Outlined", sans-serif;
+
+  /* Layout Fonts */
+  --font-label: var(--font-body);
+  --font-display: var(--font-headline);
+}
+
+
+/* Helper variant for themes */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Other themes */
+@layer theme {}

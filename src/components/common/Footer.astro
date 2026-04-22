@@ -1,0 +1,212 @@
+---
+import Container from "@/components/common/Container.astro";
+import Button from "@/components/ui/Button.astro";
+
+const currentYear = new Date().getFullYear();
+
+const footerData = {
+    brand: "ETHEREAL",
+    metadata: [
+        { label: "LAST_UPDATE:", value: "0x842bd2", isPrimary: true },
+        {
+            label: "SYSTEM_STATUS:",
+            value: "OPERATIONAL",
+            isPrimary: true,
+            animate: true,
+        },
+        { label: "AUTH_KEY:", value: "AES-256-GCM-ETH" },
+        { label: "COORDINATES:", value: "34.0522° N, 118.2437° W" },
+    ],
+    navGroups: [
+        {
+            id: "[01] PROTOCOL",
+            links: [
+                { text: "Archive", url: "#" },
+                { text: "Techne", url: "#" },
+                { text: "Nodes", url: "#" },
+            ],
+        },
+        {
+            id: "[02] CORE",
+            links: [
+                { text: "API_REF", url: "#" },
+                { text: "Security", url: "#" },
+                { text: "System", url: "#" },
+            ],
+        },
+        {
+            id: "[03] SOCIAL",
+            links: [
+                { text: "Terminal", url: "#" },
+                { text: "GitHub", url: "#" },
+                { text: "Twitter", url: "#" },
+            ],
+        },
+    ],
+    uplink: {
+        title: "ESTABLISH_UPLINK",
+        description:
+            "Initiate secure data transmission for encrypted protocol updates.",
+        placeholder: "IDENTIFIER@ETHEREAL.SYS",
+        button: "RUN_INIT_SEQUENCE",
+    },
+    legal: [
+        { text: "Privacy_PolICIES", url: "#" },
+        { text: "Terms", url: "#" },
+    ],
+};
+---
+
+<footer
+    class="bg-[#0a0a0a] text-on-surface font-headline border-t border-outline-variant/20 relative overflow-hidden"
+>
+    <!-- Giant Background Brand Name -->
+    <div
+        class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0"
+    >
+        <span
+            class="text-[30vw] font-black tracking-[0.15em] text-[#1a1a1a] opacity-30 leading-none"
+            >{footerData.brand}</span
+        >
+    </div>
+
+    <!-- Technical Content Container -->
+    <Container class="relative z-10">
+        <!-- Top Command Section -->
+        <div
+            class="grid grid-cols-1 lg:grid-cols-12 border-x border-outline-variant/10"
+        >
+            <!-- Branding & Metadata -->
+            <div class="lg:col-span-4 p-12 border-b border-outline-variant/10">
+                <div
+                    class="text-4xl font-black tracking-tighter mb-8 uppercase text-primary"
+                >
+                    {footerData.brand}
+                </div>
+                <div
+                    class="space-y-6 font-mono text-[10px] tracking-widest text-secondary/60"
+                >
+                    {
+                        footerData.metadata.map((item) => (
+                            <div class="flex justify-between items-center border-b border-outline-variant/5 pb-2">
+                                <span>{item.label}</span>
+                                <span
+                                    class:list={[
+                                        item.isPrimary && "text-primary",
+                                        item.animate && "animate-pulse",
+                                    ]}
+                                >
+                                    {item.value}
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Navigation Grid -->
+            <div
+                class="lg:col-span-5 grid grid-cols-3 border-b lg:border-l lg:border-b border-outline-variant/10"
+            >
+                {
+                    footerData.navGroups.map((group) => (
+                        <div class="p-12 border-r border-outline-variant/10 last:border-r-0">
+                            <h5 class="font-mono text-[10px] tracking-[0.3em] text-primary font-bold mb-8 uppercase">
+                                {group.id}
+                            </h5>
+                            <ul class="space-y-4">
+                                {group.links.map((link) => (
+                                    <li>
+                                        <a
+                                            class="font-body text-[11px] text-secondary hover:text-primary transition-colors duration-300 uppercase tracking-widest"
+                                            href={link.url}
+                                        >
+                                            {link.text}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <!-- Newsletter -->
+            <div
+                class="lg:col-span-3 p-12 border-b lg:border-l border-outline-variant/10 bg-[#0c0c0c]/50"
+            >
+                <h5
+                    class="font-mono text-[10px] tracking-[0.3em] text-primary font-bold mb-8 uppercase"
+                >
+                    {footerData.uplink.title}
+                </h5>
+                <p
+                    class="font-body text-[11px] text-secondary/70 mb-8 leading-relaxed"
+                >
+                    {footerData.uplink.description}
+                </p>
+                <form class="space-y-0" onsubmit="event.preventDefault()">
+                    <div class="relative group">
+                        <div
+                            class="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-mono text-[10px]"
+                        >
+                            &gt;
+                        </div>
+                        <input
+                            class="w-full bg-[#050505] border border-outline-variant/20 text-on-surface pl-10 pr-4 py-4 font-mono text-[10px] focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none rounded-none placeholder:text-secondary/20"
+                            placeholder={footerData.uplink.placeholder}
+                            type="email"
+                        />
+                    </div>
+                    <Button
+                        class="w-full bg-primary/10 border-x border-b border-primary/20 text-primary py-4 font-mono text-[10px] tracking-[0.4em] font-bold hover:bg-primary hover:text-on-primary transition-all duration-500 uppercase"
+                        >{footerData.uplink.button}</Button
+                    >
+                </form>
+            </div>
+        </div>
+
+        <!-- Bottom Data Bar -->
+        <div
+            class="grid grid-cols-1 md:grid-cols-3 border-x border-outline-variant/10"
+        >
+            <div
+                class="p-8 border-b md:border-b-0 border-outline-variant/10 flex items-center justify-between font-mono text-[9px] tracking-widest text-secondary/40"
+            >
+                <span>© {currentYear} {footerData.brand}</span>
+                <span class="text-outline-variant/20 font-light">//</span>
+                <span>ALL_RIGHTS_RESERVED</span>
+            </div>
+            <div
+                class="p-8 border-b md:border-b-0 md:border-l border-outline-variant/10 flex justify-center gap-12 font-mono text-[9px] tracking-[0.3em] uppercase"
+            >
+                {
+                    footerData.legal.map((item) => (
+                        <a
+                            class="text-secondary/40 hover:text-primary transition-colors"
+                            href={item.url}
+                        >
+                            {item.text}
+                        </a>
+                    ))
+                }
+            </div>
+            <div
+                class="p-8 md:border-l border-outline-variant/10 flex items-center justify-end font-mono text-[9px] tracking-widest text-primary/60"
+            >
+                <div class="flex items-center gap-3">
+                    <span
+                        class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"
+                    ></span>
+                    <span>NODE_SYNC_COMPLETE</span>
+                </div>
+            </div>
+        </div>
+    </Container>
+
+    <!-- Heavy Base Shadow Element -->
+    <div
+        class="h-2 w-full bg-primary shadow-[0_-10px_40px_rgba(139,92,246,0.3)]"
+    >
+    </div>
+</footer>

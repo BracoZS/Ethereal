@@ -1,0 +1,36 @@
+---
+import Container from "@/components/common/Container.astro";
+import { faqs } from "@/sitedata/sections";
+---
+
+<!-- Architectural Queries -->
+<section class="py-32">
+    <Container>
+        <div class="max-w-4xl mx-auto w-full px-12">
+            <h2 class="font-headline text-4xl mb-16 text-center italic">
+                {faqs.title}
+            </h2>
+            <div class="space-y-px bg-outline-variant/20">
+                {
+                    faqs.items.map((item) => (
+                        <div class="bg-surface p-8 group cursor-crosshair">
+                            <div class="flex justify-between items-center mb-4">
+                                <h4 class="font-headline text-xl">
+                                    {item.question}
+                                </h4>
+                                <span class="material-symbols-outlined text-primary">
+                                    add
+                                </span>
+                            </div>
+                            <div class="max-h-0 overflow-hidden group-hover:max-h-40 transition-all duration-500">
+                                <p class="font-body text-sm text-secondary leading-relaxed">
+                                    {item.answer}
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </Container>
+</section>

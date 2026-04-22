@@ -1,0 +1,31 @@
+---
+import Container from "@/components/common/Container.astro";
+import { modules } from "@/sitedata/sections";
+---
+
+<!-- Ecosystem Modules -->
+<section class="bg-surface-container py-32">
+    <Container>
+        <div class="flex justify-between items-end mb-20">
+            <h2 class="font-headline text-5xl">
+                {modules.title.main}<br>{modules.title.accent}
+            </h2>
+            <span class="font-label text-[10px] tracking-[0.4em] text-secondary">
+                {modules.tagline}
+            </span>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {modules.items.map((item) => (
+                <div class="bg-surface-container-lowest p-12 border border-outline-variant/10 hover:border-primary/50 transition-colors group">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-8 block">{item.icon}</span>
+                    <h3 class="font-headline text-2xl mb-6">{item.title}</h3>
+                    <p class="font-body text-sm text-secondary leading-relaxed mb-8">{item.desc}</p>
+                    <div class="font-label text-[10px] text-primary tracking-widest cursor-pointer group-hover:translate-x-2 transition-transform">
+                        {item.link} →
+                    </div>
+                </div>
+            ))}
+        </div>
+    </Container>
+</section>

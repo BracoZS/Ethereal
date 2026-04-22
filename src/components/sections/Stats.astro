@@ -1,0 +1,38 @@
+---
+import Container from "@/components/common/Container.astro";
+import { stats } from "@/sitedata/sections";
+---
+
+<section
+    class="bg-surface-container-lowest py-24 border-y border-outline-variant/10"
+>
+    <Container>
+        <div class="grid grid-cols-1 md:grid-cols-4  gap-px bg-outline-variant/20">
+            {
+                stats.map((stat) => (
+                    <div class="bg-surface p-12 group hover:bg-surface-container transition-colors duration-500">
+                        <div class="font-label text-[10px] text-secondary tracking-widest mb-8">
+                            {stat.label}
+                        </div>
+                        <div class="font-headline text-5xl text-on-surface group-first:text-primary mb-2">
+                            {stat.value}
+                            {stat.unit && (
+                                <span class="text-primary text-2xl">
+                                    {stat.unit}
+                                </span>
+                            )}
+                        </div>
+                        <div class="h-1 w-full bg-surface-container-highest relative overflow-hidden">
+                            <div
+                                class:list={[
+                                    "absolute left-0 top-0 h-full bg-primary",
+                                    stat.progress,
+                                ]}
+                            />
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </Container>
+</section>

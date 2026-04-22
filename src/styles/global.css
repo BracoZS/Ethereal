@@ -1,0 +1,23 @@
+/* Tailwind CSS import */
+@import "tailwindcss";
+
+/* Base styles */
+@layer base {
+    @import "./base.css";
+}
+
+/* Component styles */
+@layer components {
+    @import "./components.css";
+}
+
+/* Utilities styles */
+@layer utilities {
+    @import "./utilities.css";
+}
+
+/* Theme colors */
+@import "./themes.css";
+
+/* Animation styles */
+@import "./animations.css";

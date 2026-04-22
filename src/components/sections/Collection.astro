@@ -1,0 +1,48 @@
+---
+import Container from "@/components/common/Container.astro";
+import { collection } from "@/sitedata/sections";
+import Button from "@/components/ui/Button.astro";
+
+const { alliances } = collection;
+---
+<!-- Strategic Alliances -->
+<section class="py-20 border-y border-outline-variant/10 bg-surface">
+    <Container
+        class="flex flex-wrap justify-between items-center gap-12 opacity-30 grayscale contrast-125">
+        {alliances.map((name) => (
+            <span class="font-headline text-2xl font-bold tracking-tighter">{name}</span>
+        ))}
+    </Container>
+</section>
+
+<!-- The Collection -->
+<section class="py-32">
+    <Container>
+        <div class="mb-20">
+            <h2 class="font-headline text-5xl mb-4 underline decoration-primary/30 underline-offset-8">
+                {collection.title}</h2>
+            <p class="font-label text-[10px] tracking-widest text-secondary uppercase">
+                {collection.tagline}
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-outline-variant/20">
+            {collection.artifacts.map((artifact) => (
+                <div class="bg-surface relative group overflow-hidden">
+                    <div class="aspect-square">
+                        <img alt={artifact.name}
+                            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            src={artifact.image}>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-surface/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-12">
+                        <div class="font-label text-[10px] text-primary mb-4">{artifact.id}</div>
+                        <h3 class="font-headline text-3xl mb-4">{artifact.name}</h3>
+                        <Button class="btn-link text-[10px]">
+                            {artifact.action}
+                        </Button>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </Container>
+</section>

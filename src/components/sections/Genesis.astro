@@ -1,0 +1,36 @@
+---
+import Container from "@/components/common/Container.astro";
+import { genesis } from "@/sitedata/sections";
+---
+<!-- The Genesis Process -->
+<section class="py-32">
+    <Container>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-start">
+        <div>
+            <h2 class="font-headline text-5xl md:text-7xl mb-16 tracking-tighter">
+                {genesis.title.main}<br>
+                <span class="italic font-light">{genesis.title.accent}</span>
+            </h2>
+            <div class="space-y-16">
+                {genesis.steps.map((step) => (
+                    <div class:list={["relative pl-12 border-l", step.active ? "border-primary/30" : "border-outline-variant/30"]}>
+                        {step.active && <span class="absolute left-0 top-0 -translate-x-1/2 w-3 h-3 bg-primary"></span>}
+                        <h3 class="font-headline text-2xl mb-4">{step.id} {step.name}</h3>
+                        <p class="font-body text-sm text-secondary leading-relaxed opacity-70">{step.content}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+        <div class="aspect-[3/4] bg-surface-container-lowest p-8 relative">
+            <div class="absolute -top-4 -left-4 font-label text-[10px] tracking-widest text-primary rotate-90 origin-left">
+                {genesis.gallery.label}
+            </div>
+            <img alt="" class="w-full h-full object-cover" src={genesis.gallery.src}>
+            <div class="absolute bottom-12 right-12 bg-surface p-6 border border-outline-variant/20">
+                <div class="font-label text-[10px] text-secondary mb-2">MATERIAL_REF</div>
+                <div class="font-headline text-lg">{genesis.gallery.material}</div>
+            </div>
+        </div>
+        </div>
+    </Container>
+</section>

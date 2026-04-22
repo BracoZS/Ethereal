@@ -1,0 +1,14 @@
+---
+interface Props {
+    class?: string;
+    href?: string;
+}
+
+const { class: className, href, ...rest } = Astro.props;
+
+const Element = href ? "a" : "button";
+---
+
+<Element href={href} class:list={["btn", className]} {...rest}>
+    <slot />
+</Element>

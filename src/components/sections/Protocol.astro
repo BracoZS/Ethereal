@@ -1,0 +1,47 @@
+---
+import Container from "@/components/common/Container.astro";
+import { protocol } from "@/sitedata/sections";
+---
+
+<!-- IMPLEMENTATION PROTOCOL -->
+<section class="py-32 bg-surface-container-low border-y border-outline-variant/10">
+    <Container>
+        <div class="flex flex-col md:flex-row justify-between items-baseline mb-24">
+            <h2 class="font-headline text-5xl md:text-7xl tracking-tighter mb-4 md:mb-0">
+                {protocol.title.main}<br><span class="italic font-light">{protocol.title.accent}</span>
+            </h2>
+            <div class="text-right">
+                <span class="font-label text-[10px] tracking-[0.4em] text-primary uppercase block mb-2">{protocol.tagline}</span>
+                <p class="font-body text-xs text-secondary max-w-xs ml-auto">{protocol.description}</p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative"> 
+            <div class="hidden md:block absolute top-12 left-0 w-full h-px bg-outline-variant/20 z-0"></div>
+            
+            {protocol.phases.map((phase) => (
+                <div class="relative z-10 group">
+                    <div class="mb-10 flex items-center justify-center w-24 h-24 bg-surface-container border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-500 relative">
+                        <span class="material-symbols-outlined text-primary text-3xl">{phase.icon}</span>
+                        <div class:list={["absolute -top-1 -right-1 w-2 h-2", phase.active ? "bg-primary" : "bg-outline-variant/50"]}></div>
+                    </div>
+                    
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class:list={["font-label text-[10px] tracking-widest font-bold", phase.active ? "text-primary" : "text-secondary"]}>
+                            {phase.id}
+                        </span>
+                        <span class:list={["px-2 py-0.5 font-label text-[8px] border", 
+                            phase.active ? "bg-primary/10 text-primary border-primary/20" : "bg-surface-bright text-secondary border-outline-variant/20"]}>
+                            [{phase.status}]
+                        </span>
+                    </div>
+                    
+                    <h3 class="font-headline text-xl mb-4 tracking-tight">{phase.name}</h3>
+                    <p class="font-body text-xs text-secondary leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+                        {phase.desc}
+                    </p>
+                </div>
+            ))}
+        </div>
+    </Container>
+</section>

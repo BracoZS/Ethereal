@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/common/Container.astro";
+import Button from "../components/ui/Button.astro";
+import { site } from "../sitedata/site";
+---
+
+<BaseLayout title={`404 - Página no encontrada | ${site.name}`}>
+    <section
+        class="relative min-h-[70vh] flex items-center justify-center overflow-hidden"
+    >
+        <Container class="relative z-10">
+            <div class="text-center space-y-8 animate-fade-in-up">
+                <h1 class="text-9xl font-extrabold tracking-tighter">
+                    <span
+                        class="bg-clip-text text-transparent bg-linear-to-r from-primary to-accent"
+                    >
+                        404
+                    </span>
+                </h1>
+
+                <div class="space-y-4">
+                    <h2 class="text-3xl md:text-4xl font-bold text-foreground">
+                        ¡Vaya! Página no encontrada
+                    </h2>
+                    <p class="text-lg text-foreground/60 max-w-md mx-auto">
+                        Lo sentimos, la página que estás buscando no existe o ha
+                        sido movida.
+                    </p>
+                </div>
+
+                <div class="flex justify-center pt-4">
+                    <Button href="/" class="btn-primary px-8 h-11">
+                        Volver al inicio
+                    </Button>
+                </div>
+            </div>
+        </Container>
+    </section>
+</BaseLayout>

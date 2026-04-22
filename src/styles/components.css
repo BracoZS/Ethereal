@@ -1,0 +1,35 @@
+/* Buttons */
+.btn {
+    @apply inline-flex items-center justify-center transition-all duration-500 font-label text-xs tracking-widest font-bold px-8 py-4;
+}
+
+.btn-primary {
+    @apply bg-primary text-on-primary hover:bg-primary-container shadow-lg;
+}
+
+.btn-outline {
+    @apply border border-outline-variant/30 text-on-surface hover:bg-surface-bright;
+}
+
+.btn-glass {
+    @apply bg-surface/60 backdrop-blur-xl border border-on-surface/15 text-on-surface hover:bg-surface/80;
+}
+
+.btn-link {
+    @apply px-0 py-4 border-b border-primary w-max bg-transparent shadow-none hover:bg-transparent tracking-widest uppercase;
+}
+
+
+/* Icons */
+.material-symbols-outlined {
+    font-family: var(--font-icons);
+    font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+    font-size: 1.25rem;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+}
