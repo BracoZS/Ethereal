@@ -10,8 +10,8 @@ interface Props {
 }
 
 const {
-	title = "Astro Starter Template",
-	description = "A starter, scalable, and easy-to-use Astro template.",
+	title = site.name,
+	description = site.description,
 	canonicalURL = Astro.url.href,
 	image = "/og-image.png",
 } = Astro.props;
